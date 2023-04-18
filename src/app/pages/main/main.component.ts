@@ -12,7 +12,7 @@ export class MainComponent implements OnInit {
 
   listUser: User[] = []
   constructor(private userService: UserService,
-    private toastr: ToastrService) { }
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getAllRequest();
