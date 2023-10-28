@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -16,4 +16,5 @@ export class UserService {
   getAll(): Observable<User[]> {
     return this.http.get<User[]>(this.url + '/user');
   }
+
 }

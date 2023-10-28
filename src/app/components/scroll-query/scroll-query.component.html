@@ -1,0 +1,21 @@
+<p>Total pages: {{totalPages}}</p>
+<p>Current page: {{pageNumber}}</p>
+<p>
+    <input 
+        type="text"
+        (input)="changeFn($event)">
+</p>
+
+<div infiniteScroll 
+    [infiniteScrollDistance]="1" 
+    [infiniteScrollThrottle]="2500" 
+    (scrolled)="onScroll()"
+    [scrollWindow]="true">
+
+    <div class="row">
+        <div class="data-card col-lg-6" *ngFor="let item of list">
+            {{item.idRole}} - {{item.name}} - {{item.code}}dsadas <br><br><br><br>
+        </div>
+    </div>
+
+</div>

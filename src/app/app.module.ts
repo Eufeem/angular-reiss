@@ -10,6 +10,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { LOADING_BAR_CONFIG } from '@ngx-loading-bar/core';
 
 /**
  * Components
@@ -20,6 +24,10 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { UserComponent } from './pages/user/user.component';
+import { RoleComponent } from './pages/role/role.component';
+import { ScrollComponent } from './components/scroll/scroll.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ScrollQueryComponent } from './components/scroll-query/scroll-query.component';
 
 @NgModule({
   declarations: [
@@ -28,22 +36,33 @@ import { UserComponent } from './pages/user/user.component';
     NotFoundComponent,
     NavbarComponent,
     FooterComponent,
-    UserComponent
+    UserComponent,
+    RoleComponent,
+    ScrollComponent,
+    ScrollQueryComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
+    ReactiveFormsModule,
     AppRoutingModule,
+    HttpClientModule,
+    CommonModule,
+    BrowserAnimationsModule,
     NgbModule,
     NgbCollapseModule,
-    HttpClientModule,
+    NgbPaginationModule,
+    LoadingBarHttpClientModule,
     ToastrModule.forRoot({
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
-    CommonModule,
-    BrowserAnimationsModule,
+    InfiniteScrollModule
   ],
-  providers: [],
+  providers: [
+    { provide: NavbarComponent },
+    { provide: LOADING_BAR_CONFIG, useValue: { latencyThreshold: 100 } },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

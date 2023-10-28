@@ -1,0 +1,142 @@
+<div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-8 col-md-8">
+        <div class="shadow mb-5 bg-body rounded">
+            <!-- Header -->
+            <div class="p-3 header-shadow">
+                <h5 class="text-light">
+                    Agregar Rol 
+                </h5>
+            </div>
+            <!-- Body -->
+            <div class="p-3">
+                
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="name" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" placeholder="Ingresa nombre del rol" 
+                                id="name" formControlName="name">
+                        </div>
+                        <div class="col-6">
+                            <label for="code" class="form-label">Codigo</label>
+                            <input type="text" class="form-control" placeholder="Ingrega codigo del rol"
+                                id="code"formControlName="code">
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center mt-3">
+                        <!-- <p>Json: {{ form.value| json }}</p>
+                        <p>Form Status: {{ form.status }}</p> -->
+
+                        <div class="col-6 d-grid gap-2">
+                            <button 
+                                type="submit" 
+                                class="btn btn-success btn-sm"
+                                [disabled]="!form.valid">
+                            Submit
+                        </button>
+                        </div>
+                        
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-10 col-md-10">
+        <div class="shadow mb-5 bg-body rounded">
+            <!-- Header -->
+            <div class="p-3 header-shadow">
+                <h5 class="text-light">
+                    Tabla Rol
+                </h5>
+            </div>
+            <!-- Body -->
+            <div class="p-3">
+                <div class="row">
+                    <div class="col-12">
+                        <table  class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Codigo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of list">
+                                    <td>{{item.idRole}}</td>
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.code}}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-sm" (click)="delete(item.idRole)">
+                                            <i class="bi bi-trash"></i> Eliminar
+                                        </button> &nbsp;
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Pagination -->
+<ngb-pagination
+    class="d-flex justify-content-center"
+	[collectionSize]="collectionSize"
+	[(page)]="pageNumber"
+	[maxSize]="5"
+	[rotate]="true"
+	[boundaryLinks]="false"
+    (pageChange)="eventPage(pageNumber)">
+</ngb-pagination>
+
+
+
+<!-- <p>{{ pages | json }}</p> <br>
+<p class="fw-bold">Page Number: {{ pageNumber }}</p>
+<p class="fw-bold">Total Pages: {{ totalPages }}</p>
+<p class="fw-bold">Pages Array: {{ totalPagesArray | json }}</p>
+
+<div class="row">
+    <div class="col-md-3" *ngFor="let item of pages.content">
+        <div class="card mb-2" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Name: {{item.name}}</h5>
+                <p class="card-text">
+                    Code: {{item.code}}
+                </p>
+                <a href="#" class="btn btn-primary">ID: {{item.idRole}}</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-3">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+                <a class="page-link">Anterior</a>
+            </li>
+            <li class="page-item" 
+                [ngClass]="item === pageNumber ? 'active' : '' " 
+                *ngFor="let item of totalPagesArray">
+                <button class="page-link" (click)="changePage(item, 10)">{{ item }}</button>
+            </li>
+            
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Siguiente</a>
+            </li>
+        </ul>
+    </nav>
+</div> -->
